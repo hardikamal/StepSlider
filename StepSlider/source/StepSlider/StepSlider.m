@@ -244,9 +244,13 @@ void withoutCAAnimation(withoutAnimationBlock code)
         }
         
         trackCircle.bounds   = CGRectMake(0.f, 0.f, circleFrameSide, circleFrameSide);
-        trackCircle.path     = [UIBezierPath bezierPathWithRoundedRect:trackCircle.bounds cornerRadius:circleFrameSide / 2].CGPath;
+        //trackCircle.path     = [UIBezierPath bezierPathWithRoundedRect:trackCircle.bounds cornerRadius:circleFrameSide / 2].CGPath;
         trackCircle.position = CGPointMake(contentFrame.origin.x + stepWidth * i, CGRectGetMidY(contentFrame));
-        
+        if (self.sliderTrackImage) {
+            trackCircle.contents = (__bridge id)(self.sliderTrackImage.CGImage);
+        } else {
+            trackCircle.path = [UIBezierPath bezierPathWithRoundedRect:trackCircle.bounds cornerRadius:circleFrameSide / 2].CGPath;
+        }
         trackLabel.position        = CGPointMake(contentFrame.origin.x + stepWidth * i, labelsY);
         trackLabel.foregroundColor = self.labelColor.CGColor;
     
@@ -565,6 +569,7 @@ GENERATE_SETTER(trackColor, UIColor*, setTrackColor, );
 GENERATE_SETTER(sliderCircleRadius, CGFloat, setSliderCircleRadius, [self updateMaxRadius];);
 GENERATE_SETTER(sliderCircleColor, UIColor*, setSliderCircleColor, );
 GENERATE_SETTER(sliderCircleImage, UIImage*, setSliderCircleImage, );
+GENERATE_SETTER(sliderTrackImage, UIImage*, setSliderTrackImage, );
 
 GENERATE_SETTER(labelFont, UIFont*, setLabelFont, [self removeLabelLayers];);
 GENERATE_SETTER(labelColor, UIColor*, setLabelColor, );
