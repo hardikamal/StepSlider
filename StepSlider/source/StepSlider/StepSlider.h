@@ -59,6 +59,11 @@ IB_DESIGNABLE
 @property (nonatomic, strong) IBInspectable UIImage *sliderTrackImage;
 
 /**
+ *  Image for slider track dot.
+ */
+@property (nonatomic, strong) NSArray <UIImage *> *sliderTrackImageArray;
+
+/**
  *  A Boolean value that determines whether user interaction with dots are ignored. Default value is `YES`.
  */
 @property (nonatomic, getter=isDotsInteractionEnabled) IBInspectable BOOL dotsInteractionEnabled;
@@ -107,7 +112,7 @@ IB_DESIGNABLE
 @property (nonatomic) StepSliderTextOrientation labelOrientation;
 
 /**
- *  If `YES` adjust first and last labels to StepSlider frame. And change alingment to left and right. 
+ *  If `YES` adjust first and last labels to StepSlider frame. And change alingment to left and right.
  *  Otherwise label position is same as trackCircle, and aligment always is center.
  */
 @property (nonatomic) IBInspectable BOOL adjustLabel;
